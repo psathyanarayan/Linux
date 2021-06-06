@@ -27,11 +27,10 @@ void print(int *result)
 int main()
 {
   
-  
+  int *res;
   pthread_t  newThread;
   pthread_create(&newThread, NULL, add,  
   NULL);
-  pthread_join(newThread,NULL);
+  pthread_join(newThread,(void *)res);
+  print(res);
 
-
-}

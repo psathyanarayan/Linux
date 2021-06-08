@@ -12,11 +12,11 @@ void* add(void* arg)
 {
  
   int i,num1,num2;
-
+  int *sum = (int *)malloc(sizeof(int));
   printf("\nEnter the numbers :-->\n");
   scanf("%d%d",&num1,&num2);
-  printf("%d\n",num1+num2);
- 
+  *sum = num1 + num2;
+  return sum;
 }
 void print(int *result)
 {
@@ -29,8 +29,7 @@ int main()
   
   int *res;
   pthread_t  newThread;
-  pthread_create(&newThread, NULL, add,  
-  NULL);
-  pthread_join(newThread,(void *)res);
+  pthread_create(&newThread, NULL, add,NULL);
+  pthread_join(newThread,(void *)&res);
   print(res);
-
+}
